@@ -1,0 +1,281 @@
+OOAD
+1: Draw collaboration diagram for online Ticket booking System.
+
+2: Draw sequence diagram for Online Examination System.
+
+3: Draw Class Diagram for the System.
+
+4:
+
+5:
+
+WEB TECHNOLOGIES
+Q1. Write a Servlet Programme to print the current date and time along with the
+timestamp.
+Ans1:
+package com.ignou.app2;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+/**
+* Servlet implementation class Question1
+*/ }
+
+Q2. Create an HTML form with the input of student information using HTTP
+Protocol and method, then display the input information using Servlet.
+Student-form-add.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="POST" action="StudentFormServlet">
+First Name: <input type="text" name="fname" /><br>
+Last Name: <input type="text" name="lname" /><br>
+Age: <input type="number" name="age" /><br>
+Email: <input type="text" name="email" /><br>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
+StudentFormServlet.java
+package com.ignou.app2;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+/**
+* Servlet implementation class StudentFormServlet
+*/
+
+public class StudentFormServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+/**
+* @see HttpServlet#HttpServlet()
+*/
+public StudentFormServlet() {
+super();
+// TODO Auto-generated constructor stub
+}
+public class Question1 extends HttpServlet {
+private static final long serialVersionUID = 1L;
+/**
+* @see HttpServlet#HttpServlet()
+*/
+public Question1() {
+super();
+// TODO Auto-generated constructor stub
+}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException {
+// TODO Auto-generated method stub
+PrintWriter out = response.getWriter();
+Date date = new Date();
+long timeStamp = System.currentTimeMillis();
+String ipAddress = request.getHeader("X-FORWARDED-FOR");
+System.out.println("ip address - " + ipAddress);
+if(ipAddress == null) {
+ipAddress = request.getRemoteAddr();
+
+}
+out.println("Date - " + date);
+out.println("Timestamp - " + timeStamp);
+out.println("Ip Address - " + request.getRemoteAddr());
+out.println("Ip Address Local - " + request.getLocalAddr());
+}
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+String fname = request.getParameter("fname");
+String lname = request.getParameter("lname");
+String age = request.getParameter("age");
+String email = request.getParameter("email");
+out.println("<html><head>");
+out.println("<title>Hello Student</title>");
+out.println("<body>");
+out.println("<h3>Student Details</h3><hr>");
+out.println("<p>First Name: "+ fname +"</p>");
+
+out.println("<p>Last Name: "+ lname +"</p>");
+out.println("<p>Age: "+ age +"</p>");
+out.println("<p>Email: "+ email +"</p>");
+}
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+}
+}
+Q3. Write a servlet program to capture client IPs and display it.
+package com.ignou.app2;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+/**
+* Servlet implementation class Question1
+*/
+public class Question1 extends HttpServlet {
+private static final long serialVersionUID = 1L;
+/**
+* @see HttpServlet#HttpServlet()
+
+*/
+public Question1() {
+super();
+// TODO Auto-generated constructor stub
+}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException {
+// TODO Auto-generated method stub
+PrintWriter out = response.getWriter();
+Date date = new Date();
+long timeStamp = System.currentTimeMillis();
+String ipAddress = request.getHeader("X-FORWARDED-FOR");
+System.out.println("ip address - " + ipAddress);
+if(ipAddress == null) {
+ipAddress = request.getRemoteAddr();
+}
+out.println("Date - " + date);
+out.println("Timestamp - " + timeStamp);
+out.println("Ip Address - " + request.getRemoteAddr());
+out.println("Ip Address Local - " + request.getLocalAddr());
+}
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+
+}
+}
+Q4. Write a servlet program for session management using HTTP Session along
+with tracking and also use a cookie for session tracking.
+form-submit.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="POST" action="SessionTrackingServlet">
+Name: <input type="text" name="name" /> <br><br>
+Age: <input type="text" name="age" /> <br><br>
+Email: <input type="text" name="email" /> <br><br>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
+SessionTrackingServlet.java
+package com.ignou.app2;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import java.net.URLEncoder;
+public class SessionTrackingServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+public SessionTrackingServlet() {
+super();
+}
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+HttpSession session = request.getSession();
+// Read form data
+String name = request.getParameter("name");
+String age = request.getParameter("age");
+String email = request.getParameter("email");
+session.setAttribute("name", name);
+session.setAttribute("age", age);
+session.setAttribute("email", email);
+out.println(name);
+out.println(age);
+// Cookie nameCookie = new Cookie("name","vimal");
+Cookie nameCookie = new Cookie("name",URLEncoder.encode(name,
+"UTF-8"));
+Cookie ageCookie = new Cookie("age",URLEncoder.encode(age, "UTF-8"));
+Cookie emailCookie = new Cookie("email",URLEncoder.encode(email,
+"UTF-8"));
+response.addCookie(nameCookie);
+response.addCookie(ageCookie);
+response.addCookie(emailCookie);
+out.println("Success adding details in session and cookie");
+}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+doGet(request, response);
+}
+}
+Q5. Write JSP Programme to print current date and time along with timestamp,
+implement auto-refresh of a page.
+<%@ page
+import="java.util.*"
+language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+Date date = new Date();
+int seconds = date.getSeconds();
+out.println("Date: " + new Date());
+out.println("<br>Timestamp: " + seconds + " " + System.currentTimeMillis());
+response.setIntHeader("Refresh", 5);
+%>
+</body>
+</html>
+
+
